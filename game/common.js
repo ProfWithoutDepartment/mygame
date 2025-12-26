@@ -211,7 +211,7 @@ function goToSiteHome() {
 
 // Функция для возврата на страницу игры на сайте
 function goToGameHome() {
-  window.location.href = '../../game-index.html';
+  window.location.href = 'game-index.html';
 }
 
 // Инициализация игры при загрузке страницы
