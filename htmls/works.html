@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Произведения | Архивы Профессора</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Кнопка для открытия/закрытия бокового меню -->
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="sidebar-link">Главная</a></li>
+                <li><a href="works.html" class="sidebar-link active">Произведения</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 1991-2025 Файнзильберг Г.А</p>
+        </div>
+    </aside>
+
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <a href="index.html" class="logo-link">
+                    <div class="writer-logo" aria-hidden="true">
+                        <div class="head"></div>
+                        <div class="glasses">
+                            <div class="glass left"></div>
+                            <div class="bridge"></div>
+                            <div class="glass right"></div>
+                        </div>
+                        <div class="shoulders"></div>
+                        <div class="cup"></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Главная</a></li>
+                    <li><a href="works.html" class="nav-link">Произведения</a></li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Мои произведения</h1>
+                <p>Полное собрание моих литературных работ в хронологическом порядке</p>
+            </div>
+        </section>
+
+        <section class="works-listing">
+            <div class="container">
+                <div class="works-list">
+                    <a href="sokrovishe.html" class="work-item-link">
+                        <article class="work-item">
+                            <div class="work-image">
+                                <img src="sokrovishe.jpg" alt="Обложка 'Сокровище благородных джентельменов'">
+                            </div>
+                            <div class="work-content">
+                                <h2>Сокровище благородных джентельменов</h2>
+                                <p class="work-description">Уилла, слэкера вся Аронбруха, всегда тянуло на злоключения, и было почти закономерно, что он захочет отправиться на поиски пропавшей полярной экспедиции. Но там ему предстояло столкнуться с намного более загадочными силами, чем жестокие снежные бури и прихоти Чертова моря</p>
+                            </div>
+                        </article>
+                    </a>
+
+                    <a href="kentavr.html" class="work-item-link">
+                        <article class="work-item">
+                            <div class="work-image">
+                                <img src="kentavr.jpg" alt="Обложка 'Под копытом Кентавра'">
+                            </div>
+                            <div class="work-content">
+                                <h2>Под копытом Кентавра</h2>
+                                <p class="work-description">Первое в истории пилотируемое межзвездное путешествие должно было стать вехой в истории человечества, однако никто не мог представить, что ждет космонавтов на Альфа Центавре...</p>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер сайта -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

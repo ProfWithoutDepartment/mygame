@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 3: Собери предложения</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Уровень 3: Собери предложения</h1>
+            <div class="game-info">
+                <div>Игрок: <span id="playerName"></span></div>
+                <div>Время: <span id="timer">120</span> сек.</div>
+                <div>Счет: <span id="score">0</span></div>
+                <div>Ошибки: <span id="mistakes">0</span></div>
+                <div>Собрано: <span id="completed">0</span>/3</div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="task">
+                <h2>Перетащите слова из нижней области, чтобы составить три предложения:</h2>
+                
+                <div class="sentence-construction-area">
+                    <div class="construction-container">
+                        <div class="sentence-slots-container">
+                            <!-- Предложение 1 -->
+                            <div class="sentence-slot-container">
+                                <div class="sentence-slot" data-slot="1">
+                                    <div class="slot-header">Предложение 1</div>
+                                    <div class="word-slots" id="sentenceSlot1">
+                                        <!-- Слова будут добавлены сюда -->
+                                    </div>
+                                </div>
+                                <button class="slot-check-button" data-slot="1">Проверить</button>
+                            </div>
+                            
+                            <!-- Предложение 2 -->
+                            <div class="sentence-slot-container">
+                                <div class="sentence-slot" data-slot="2">
+                                    <div class="slot-header">Предложение 2</div>
+                                    <div class="word-slots" id="sentenceSlot2">
+                                        <!-- Слова будут добавлены сюда -->
+                                    </div>
+                                </div>
+                                <button class="slot-check-button" data-slot="2">Проверить</button>
+                            </div>
+                            
+                            <!-- Предложение 3 -->
+                            <div class="sentence-slot-container">
+                                <div class="sentence-slot" data-slot="3">
+                                    <div class="slot-header">Предложение 3</div>
+                                    <div class="word-slots" id="sentenceSlot3">
+                                        <!-- Слова будут добавлены сюда -->
+                                    </div>
+                                </div>
+                                <button class="slot-check-button" data-slot="3">Проверить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="storm-area" id="stormArea">
+                    <!-- Здесь будут падать слова -->
+                </div>
+                
+                <div class="feedback" id="feedback">
+                    <!-- Сообщение о правильности -->
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="finishBtn">Завершить уровень</button>
+            </div>
+            
+            <div class="instructions">
+                <p><strong>Инструкция:</strong> Перетащите падающие слова в области сверху, чтобы составить 3 предложения. Слова можно возвращать обратно в нижнюю область. Нажмите кнопку "Проверить" рядом с каждым предложением. Правильное предложение: зеленое, неправильное: красное (ошибка), пустое: игнорируется.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Заголовок</h3>
+            <p class="modal-message" id="modalMessage">Сообщение</p>
+            <div class="modal-buttons">
+                <button class="modal-button modal-button-primary" id="modalOkButton">OK</button>
+                <button class="modal-button modal-button-secondary" id="modalCancelButton" style="display: none;">Отмена</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../libs/confetti.browser.min.js"></script>
+    <script src="../common.js"></script>
+    <script src="script3.js"></script>
+</body>
+</html>

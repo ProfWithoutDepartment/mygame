@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Произведения | Архивы Профессора</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Кнопка для открытия/закрытия бокового меню -->
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="sidebar-link active">Главная</a></li>
+                <li><a href="htmls/works.html" class="nav-link">Произведения</a></li>
+                <li><a href="htmls/dom-test.html" class="nav-link">DOM-тест</a></li>
+                <li><a href="htmls/words.html" class="nav-link">Перетаскивание слов</a></li>
+                <!-- ДОБАВЛЕНА ССЫЛКА НА ИГРУ -->
+                <li><a href="game/game-index.html" class="nav-link">Игра: Слова</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 1991-2025 Файнзильберг Г.А</p>
+        </div>
+    </aside>
+
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <a href="index.html" class="logo-link">
+                    <div class="writer-logo" aria-hidden="true">
+                        <div class="head"></div>
+                        <div class="glasses">
+                            <div class="glass left"></div>
+                            <div class="bridge"></div>
+                            <div class="glass right"></div>
+                        </div>
+                        <div class="shoulders"></div>
+                        <div class="cup"></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Главная</a></li>
+                    <li><a href="htmls/works.html" class="nav-link">Произведения</a></li>
+                    <!-- ДОБАВЛЕНА ССЫЛКА НА ИГРУ В ОСНОВНОМ МЕНЮ -->
+                    <li><a href="game/game-index.html" class="nav-link">Игра</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое остается без изменений -->
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1>Герман Файнзильберг</h1>
+                <p>Писатель, анекдотист, Агасфер из мира вагантов</p>
+            </div>
+        </section>
+
+        <section class="about-preview">
+            <div class="container">
+                <h2>Доброго времени суток, дорогие читатели и проходимцы</h2>
+                <div class="content-grid">
+                    <div class="text-content">
+                        <p>Этот сайт — цифровая библиотека моих работ, от готовых до находящихся в производстве.</p>
+                        <p>Все они — не просто плоды моей профессии и призвания, но часть меня, ибо делиться по-человечески своими сопереживаниями у меня получается плохо. Письмо для меня — это не просто профессия, это способ существования — потому как иного призвания я не нашел. Каждая история, рождающаяся из-под пера, будь то короткий рассказ или объемный роман, является частью большого путешествия по лабиринтам человеческой психики, социальных условностей и вечных вопросов бытия.</p>
+                        <p>Меня часто спрашивают, откуда берутся идеи. Они повсюду: в тихом шепоте осеннего леса, в торопливых шагах по мокрой мостовой, в обрывках разговоров, долетающих из соседнего кафе. Задача писателя — не просто услышать, но и суметь пересказать эти истории, облачив их в плоть и кровь слов.</p>
+                        <p>В своих работах я стараюсь исследовать границы человеческого опыта. Мои герои — это обычные люди, оказавшиеся в необычных обстоятельствах, или необычные люди, пытающиеся найти свое место в обычном мире. Их борьба, победы и поражения — это отражение наших собственных внутренних битв.</p>
+                        <p>Творческий процесс для меня — это постоянный диалог с самим собой и с миром. Иногда слова льются легко и свободно, иногда каждое предложение дается с трудом. Но в этом и есть магия письма — в возможности запечатлеть мимолетные мгновения, эмоции и мысли, превратив их в нечто вечное.</p>
+                    </div>
+                    <div class="image-content">
+                        <img src="Fainzilberg.png" alt="Портрет профессора" class="author-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-works">
+            <div class="container">
+                <h2>Последние работы</h2>
+                <div class="works-grid">
+                    <article class="work-card">
+                        <img src="kentavr.jpg" alt="Обложка книги 'Под копытом Кентавра'">
+                        <h3>Под копытом Кентавра</h3>
+                        <a href="kentavr.html" class="read-more">Читать</a>
+                    </article>
+                    <article class="work-card">
+                        <img src="pictures/sokrovishe.jpg" alt="Обложка сборника 'Сокровище благородных джентльменов'">
+                        <h3>Сокровище благородных джентльменов</h3>
+                        <a href="sokrovishe.html" class="read-more">Читать</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-preview">
+            <div class="container">
+                <h2>Из блокнота</h2>
+                <p>Нетипичные для меня рабочие заметки и нехудожественные произведения</p>
+                <div class="blog-grid">
+                    <div class="blog-post">
+                        <img src="pictures/ways.jpg" alt="Иллюстрация к заметке о направлениях">
+                        <h3>О направлениях</h3>
+                        <p>Некоторые мои размышления, спровоцированные одним писательским конкурсом</p>
+                        <a href="ways.html" class="read-more">Читать</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер сайта -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="jsscripts/script.js"></script>
+</body>
+</html>

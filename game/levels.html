@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор уровня</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        body {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .left-panel {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .right-panel {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .player-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .level-card {
+            padding: 25px 15px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .level-card.level1 {
+            background: linear-gradient(135deg, #FF416C 0%, #FF4B2B 100%);
+        }
+        
+        .level-card.level2 {
+            background: linear-gradient(135deg, #36D1DC 0%, #5B86E5 100%);
+        }
+        
+        .level-card.level3 {
+            background: linear-gradient(135deg, #834d9b 0%, #d04ed6 100%);
+        }
+        
+        .level-card.disabled {
+            background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .level-card.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .level-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .level-description {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .rating-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .rating-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .rating-table th {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .rating-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .rating-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .rating-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .current-player {
+            background-color: #e8f5e9 !important;
+            font-weight: bold;
+        }
+        
+        .place-1 { color: #FFD700; font-weight: bold; }
+        .place-2 { color: #C0C0C0; font-weight: bold; }
+        .place-3 { color: #CD7F32; font-weight: bold; }
+        
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        #logout {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        #logout:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .lock-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-header">
+        <h1>Выбор уровня</h1>
+        <p>Выберите уровень для начала игры</p>
+    </div>
+    
+    <div class="container">
+        <div class="left-panel">
+            <div class="player-info">
+                Игрок: <span id="currentPlayer"></span>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalScore">0</div>
+                    <div class="stat-label">Общий счет</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="completedLevels">0</div>
+                    <div class="stat-label">Пройдено уровней</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="playerRank">-</div>
+                    <div class="stat-label">Ваше место</div>
+                </div>
+            </div>
+            
+            <div class="levels-grid">
+                <a href="level1/select-mode.html" class="level-card level1" id="level1">
+                    <div class="level-number">1</div>
+                    <div>Заполни пропуск</div>
+                    <div class="level-description">Дважды кликните на правильное слово</div>
+                </a>
+                
+                <a href="level2/select-mode.html" class="level-card level2" id="level2">
+                    <div class="level-number">2</div>
+                    <div>Заполни пропуски</div>
+                    <div class="level-description">Перетащите слова на пропуски в тексте</div>
+                    <div class="lock-icon"></div>
+                </a>
+                
+                <a href="level3/select-mode.html" class="level-card level3" id="level3">
+                    <div class="level-number">3</div>
+                    <div>Текст с пропусками</div>
+                    <div class="level-description">Заполните пропуски в большом тексте</div>
+                    <div class="lock-icon"></div>
+                </a>
+            </div>
+            
+            <div class="actions">
+                <button id="logout">Выйти</button>
+                <button onclick="window.location.href='../index.html'" class="game-btn">На главную сайта</button>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <h2 class="rating-title">ТОП-10 Игроков</h2>
+            <table class="rating-table">
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Имя</th>
+                        <th>Уровень 1</th>
+                        <th>Уровень 2</th>
+                        <th>Уровень 3</th>
+                        <th>Всего</th>
+                    </tr>
+                </thead>
+                <tbody id="ratingTableBody">
+                    <!-- Рейтинг будет загружен скриптом -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="common.js"></script>
+    <script>
+        // Загружаем данные игрока
+        const playerName = localStorage.getItem('playerName');
+        if (playerName) {
+            document.getElementById('currentPlayer').textContent = playerName;
+        } else {
+            window.location.href = 'index.html';
+        }
+        
+        // Функция для получения данных рейтинга
+        function getRatingData() {
+            return JSON.parse(localStorage.getItem('gameRating')) || [];
+        }
+        
+        // Функция для отображения рейтинга
+        function displayRating() {
+            const rating = getRatingData();
+            const currentPlayer = playerName;
+            
+            // Сортируем по общему счету (по убыванию)
+            rating.sort((a, b) => (b.total || 0) - (a.total || 0));
+            
+            // Берем топ-10
+            const top10 = rating.slice(0, 10);
+            const tbody = document.getElementById('ratingTableBody');
+            tbody.innerHTML = '';
+            
+            // Заполняем таблицу
+            top10.forEach((player, index) => {
+                const row = document.createElement('tr');
+                
+                // Проверяем, это текущий игрок?
+                if (player.name === currentPlayer) {
+                    row.classList.add('current-player');
+                }
+                
+                // Определяем класс для места
+                let placeClass = '';
+                if (index === 0) placeClass = 'place-1';
+                else if (index === 1) placeClass = 'place-2';
+                else if (index === 2) placeClass = 'place-3';
+                
+                row.innerHTML = `
+                    <td class="${placeClass}">${index + 1}</td>
+                    <td>${player.name}</td>
+                    <td>${player.level1 || 0}</td>
+                    <td>${player.level2 || 0}</td>
+                    <td>${player.level3 || 0}</td>
+                    <td><strong>${player.total || 0}</strong></td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Заполняем статистику текущего игрока
+            const currentPlayerData = rating.find(p => p.name === currentPlayer);
+            if (currentPlayerData) {
+                document.getElementById('totalScore').textContent = currentPlayerData.total || 0;
+                
+                // Считаем пройденные уровни
+                let completed = 0;
+                if (currentPlayerData.level1 > 0) completed++;
+                if (currentPlayerData.level2 > 0) completed++;
+                if (currentPlayerData.level3 > 0) completed++;
+                document.getElementById('completedLevels').textContent = completed;
+                
+                // Находим место игрока
+                const playerIndex = rating.findIndex(p => p.name === currentPlayer);
+                document.getElementById('playerRank').textContent = playerIndex >= 0 ? playerIndex + 1 : '-';
+            }
+        }
+        
+        // Функция проверки доступности уровней
+        function updateLevelsAvailability() {
+            const passedLevels = JSON.parse(localStorage.getItem('passedLevels')) || [false, false, false];
+            
+            // Уровень 1 всегда доступен
+            const level1Card = document.getElementById('level1');
+            level1Card.classList.remove('disabled');
+            
+            // Уровень 2 доступен, если пройден уровень 1
+            const level2Card = document.getElementById('level2');
+            if (passedLevels[0]) {
+                level2Card.classList.remove('disabled');
+                level2Card.querySelector('.lock-icon').style.display = 'none';
+            } else {
+                level2Card.classList.add('disabled');
+                level2Card.querySelector('.lock-icon').style.display = 'block';
+                // Отключаем ссылку
+                level2Card.href = 'javascript:void(0)';
+                level2Card.onclick = function() {
+                    alert('Чтобы открыть уровень 2, сначала пройдите уровень 1!');
+                };
+            }
+            
+            // Уровень 3 доступен, если пройден уровень 2
+            const level3Card = document.getElementById('level3');
+            if (passedLevels[1]) {
+                level3Card.classList.remove('disabled');
+                level3Card.querySelector('.lock-icon').style.display = 'none';
+            } else {
+                level3Card.classList.add('disabled');
+                level3Card.querySelector('.lock-icon').style.display = 'block';
+                // Отключаем ссылку
+                level3Card.href = 'javascript:void(0)';
+                level3Card.onclick = function() {
+                    if (passedLevels[0]) {
+                        alert('Чтобы открыть уровень 3, сначала пройдите уровень 2!');
+                    } else {
+                        alert('Чтобы открыть уровень 3, сначала пройдите уровень 1 и 2!');
+                    }
+                };
+            }
+        }
+        
+        // Кнопка выхода
+        document.getElementById('logout').addEventListener('click', function() {
+            localStorage.removeItem('playerName');
+            window.location.href = 'game-index.html';
+        });
+        
+        // Отображаем рейтинг и обновляем доступность уровней при загрузке
+        displayRating();
+        updateLevelsAvailability();
+        
+        // Обновляем рейтинг каждые 5 секунд (если страница открыта долго)
+        setInterval(displayRating, 5000);
+    </script>
+</body>
+</html>

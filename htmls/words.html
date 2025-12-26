@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Задание: Слова — Вариант 2</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/words.css">
+</head>
+<body>
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+    </button>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html" class="sidebar-link active">Главная</a></li>
+                <li><a href="works.html" class="nav-link">Произведения</a></li>
+                <li><a href="dom-test.html" class="nav-link">DOM-тест</a></li>
+                <li><a href="words.html" class="nav-link">Перетаскивание слов</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 1991-2025 Файнзильберг Г.А</p>
+        </div>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <a href="../index.html" class="logo-link">
+                    <div class="writer-logo" aria-hidden="true">
+                        <div class="head"></div>
+                        <div class="glasses">
+                            <div class="glass left"></div>
+                            <div class="bridge"></div>
+                            <div class="glass right"></div>
+                        </div>
+                        <div class="shoulders"></div>
+                        <div class="cup"></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="works.html" class="nav-link">Произведения</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="container words-page">
+            <h1>Задание — перетаскивание слов (Вариант 2)</h1>
+
+            <!-- ВЕРХНИЙ БЛОК 3 (широкая синяя полоса, фикс. высота, scroll при необходимости) -->
+            <div id="panel3" class="panel panel-blue top-panel">
+                <h3 class="panel-title">Рабочая область</h3>
+                <div id="targetArea" class="drop-area target-area" aria-label="Рабочая область" data-zone="target">
+                    <!-- сюда перетаскиваются элементы -->
+                </div>
+            </div>
+
+            <!-- НИЖНИЙ РЯД: левая колонка (блок 2) и правая большая область (блок 1) -->
+            <div class="bottom-row">
+                <!-- ЛЕВЫЙ БЛОК 2 (исходный список прямоугольников) -->
+                <aside id="panel2" class="panel panel-side">
+                    <h3 class="panel-title">Исходный блок</h3>
+                    <div id="sourceArea" class="drop-area source-area" aria-label="Исходный список слов" data-zone="source">
+                        <!-- элементы появятся здесь после Разобрать -->
+                    </div>
+                </aside>
+
+                <!-- ПРАВЫЙ БЛОК 1 (большая область с полем ввода и красным отображением) -->
+                <section id="panel1" class="panel panel-main">
+                    <div class="input-row">
+                        <textarea id="wordsInput" rows="2" placeholder="Введите слова, разделяя их через ' - ' (пример: лес - бочка - бык - крик - 3 - Бок)"></textarea>
+                        <div class="input-controls">
+                            <button id="parseBtn" class="button">Разобрать</button>
+                            <button id="clearBtn" class="button" style="background:#888;">Очистить</button>
+                        </div>
+                    </div>
+
+                    <h3 class="panel-title">Красный блок (отображение)</h3>
+                    <div class="panel-red display-panel">
+                        <div id="displayWord" class="display-word">Нажмите слово в синем блоке</div>
+                    </div>
+
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../jsscripts/words.js"></script>
+    <script src="../jsscripts/script.js"></script>
+</body>
+</html>

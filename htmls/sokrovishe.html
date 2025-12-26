@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сокровище благородных джентльменов - Оглавление | Архивы Профессора</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Стили для страницы оглавления */
+        .work-header {
+            background: #2C3E50;
+            color: var(--white);
+            padding: 3rem 0;
+            margin-bottom: 0;
+        }
+        
+        .work-header-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .work-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .work-subtitle {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        /* Блок описания с темным фоном */
+        .work-description-section {
+            background: var(--secondary-color);
+            color: var(--light-text);
+            padding: 3rem 0;
+        }
+        
+        .description-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .description-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            text-align: justify;
+        }
+        
+        .description-block h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: justify;
+        }
+        
+        .description-block p {
+            line-height: 1.7;
+            opacity: 0.9;
+            text-align: justify;
+        }
+        
+        /* Блок с оглавлением */
+        .toc-section {
+            background: var(--white);
+            padding: 3rem 0;
+        }
+        
+        .toc-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .toc-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .toc-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .toc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .toc-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .toc-item:hover {
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        
+        .toc-link {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .chapter-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .chapter-info {
+            flex: 1;
+        }
+        
+        .chapter-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .chapter-description {
+            color: #6c757d;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        .chapter-arrow {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-item:hover .chapter-arrow {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        /* Навигация */
+        .work-navigation {
+            background: var(--white);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .work-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Адаптивность */
+        @media (min-width: 768px) {
+            .work-title {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .work-title {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .toc-link {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .chapter-info {
+                text-align: center;
+            }
+            
+            .toc-item {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .toc-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка для открытия/закрытия бокового меню -->
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="sidebar-link">Главная</a></li>
+                <li><a href="works.html" class="sidebar-link">Произведения</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>© 2023 Архивы Профессора</p>
+        </div>
+    </aside>
+
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <a href="index.html" class="logo-link">
+                    <div class="writer-logo" aria-hidden="true">
+                        <div class="head"></div>
+                        <div class="glasses">
+                            <div class="glass left"></div>
+                            <div class="bridge"></div>
+                            <div class="glass right"></div>
+                        </div>
+                        <div class="shoulders"></div>
+                        <div class="cup"></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="works.html" class="nav-link">Произведения</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="main">
+
+        <!-- Заголовок произведения -->
+        <section class="work-header">
+            <div class="container work-header-content">
+                <h1 class="work-title">Сокровище благородных джентльменов</h1>
+                <p class="work-subtitle">Новелла в шести частях</p>
+            </div>
+        </section>
+
+        <!-- Блок описания (темный фон) -->
+        <section class="work-description-section">
+            <div class="container">
+                <div class="description-grid">
+                    <!-- Синопсис -->
+                    <div class="description-block synopsis">
+                        <h3>Синопсис</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                    </div>
+
+                    <!-- Комментарий автора -->
+                    <div class="description-block author-comment">
+                        <h3>Комментарий автора</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                    </div>
+
+                    <!-- Посвящение -->
+                    <div class="description-block dedication">
+                        <h3>Посвящение</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing eli</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок с оглавлением -->
+        <section class="toc-section">
+            <div class="container">
+                <div class="toc-container">
+                    <div class="toc-header">
+                        <h2>Оглавление</h2>
+                        <p>Выберите главу для чтения</p>
+                    </div>
+                    
+                    <div class="toc-list">
+                        <!-- Глава 1 -->
+                        <div class="toc-item">
+                            <a href="sokrovishe/chapter1.html" class="toc-link">
+                                <div class="chapter-number">1</div>
+                                <div class="chapter-info">
+                                    <div class="chapter-title">Слэкер всея Аронбруха</div>
+                                </div>
+                                <div class="chapter-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <!-- Глава 2 -->
+                        <div class="toc-item">
+                            <a href="sokrovishe/chapter2.html" class="toc-link">
+                                <div class="chapter-number">2</div>
+                                <div class="chapter-info">
+                                    <div class="chapter-title">Два друга</div>
+                                </div>
+                                <div class="chapter-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <!-- Глава 3 -->
+                        <div class="toc-item">
+                            <a href="sokrovishe/chapter3.html" class="toc-link">
+                                <div class="chapter-number">3</div>
+                                <div class="chapter-info">
+                                    <div class="chapter-title">Заинтерисованные стороны</div>
+                                </div>
+                                <div class="chapter-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <!-- Глава 4 -->
+                        <div class="toc-item">
+                            <a href="sokrovishe/chapter4.html" class="toc-link">
+                                <div class="chapter-number">4</div>
+                                <div class="chapter-info">
+                                    <div class="chapter-title">На пути к счастливейшему из дней</div>
+                                </div>
+                                <div class="chapter-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <!-- Глава 5 -->
+                        <div class="toc-item">
+                            <a href="sokrovishe/chapter5.html" class="toc-link">
+                                <div class="chapter-number">5</div>
+                                <div class="chapter-info">
+                                    <div class="chapter-title">Сэр Уильям и сэр Альберт</div>
+                                </div>
+                                <div class="chapter-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <!-- Глава 6 -->
+                        <div class="toc-item">
+                            <a href="sokrovishe/chapter6.html" class="toc-link">
+                                <div class="chapter-number">6</div>
+                                <div class="chapter-info">
+                                    <div class="chapter-title">Счастливейший из дней</div>
+                                </div>
+                                <div class="chapter-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

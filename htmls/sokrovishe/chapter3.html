@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глава 3: Заинтересованные стороны | Архивы Профессора</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+.work-header {
+    background: #2C3E50;
+    color: var(--white);
+    padding: 3rem 0;
+    margin-bottom: 0;
+}
+
+.work-header-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.work-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.work-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.work-text-section {
+    background: var(--white);
+    padding: 3rem 0;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.text-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.text-content i {
+    font-style: italic;
+}
+
+.chapter-cover {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+}
+
+.chapter-cover img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    
+    /* Сохранение пропорций как в оригинальном документе */
+    object-fit: contain;
+    
+    /* Центрирование изображения */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.chapter-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.chapter-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+@media (max-width: 767px) {
+    .work-title {
+        font-size: 2rem;
+    }
+    
+    .text-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .chapter-navigation {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Кнопка для открытия/закрытия бокового меню -->
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html" class="sidebar-link">Главная</a></li>
+                <li><a href="../works.html" class="sidebar-link">Произведения</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>© 2023 Архивы Профессора</p>
+        </div>
+    </aside>
+
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <a href="../index.html" class="logo-link">
+                    <div class="writer-logo" aria-hidden="true">
+                        <div class="head"></div>
+                        <div class="glasses">
+                            <div class="glass left"></div>
+                            <div class="bridge"></div>
+                            <div class="glass right"></div>
+                        </div>
+                        <div class="shoulders"></div>
+                        <div class="cup"></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="../works.html" class="nav-link">Произведения</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="main">
+        <!-- Заголовок произведения -->
+        <section class="work-header">
+            <div class="container work-header-content">
+                <h1 class="work-title">Глава 3: Заинтересованные стороны</h1>
+            </div>
+        </section>
+
+        <!-- Блок с текстом произведения -->
+        <section class="work-text-section">
+            <div class="container">
+                <div class="text-content">
+                    <!-- Обложка главы -->
+                    <div class="chapter-cover">
+                        <img src="chapter3.jpeg" alt="Иллюстрация к главе 'Заинтересованные стороны'" />
+                    </div>
+                    <p></p>
+
+                    <p>— Думаешь, смогут?</p>
+
+                    <p>Двое сидели в пабе, в дальнем углу. Двое непримечательных забулдыги. Если смотрели люди.</p>
+
+                    <p>— А почему нет?! — Истерический смешок, для него. Люди же не слышали. Не могли услышать.</p>
+
+                    <p>— Мне пятерых полярников хватило, — сухо ответил он. И снова её прыгающий смех.</p>
+
+                    <p>— Много анима не бывает! Тебе братец не рассказывал?!</p>
+
+                    <p>— Мы с ним не общаемся.</p>
+
+                    <p>Тишина. Лишь скрип инструментов мешает ему думать. От мелодии невольно двигаются ноги. Ей же наверняка все равно. Она любит всю музыку. И не любит никакую.</p>
+
+                    <p>— А чем еще заняться?! — Еще один смешок. — Будешь над своим <i>кладом</i> чахнуть?!</p>
+
+                    <p>— А чем они занимаются? — Раздраженно переспросил он. — Что им неймется? Куда они идут?</p>
+
+                    <p>— А ты не конец! Ты начало! Самое начало! О конце пусть думает моя сестрица! — Она заискивает, играется. Ей то что. Ей все едино. И свой <i>клад</i> она запрятала намного лучше. — Подумай лучше, <i>куда идем мы</i>?!</p>
+
+                    <p>— <i>В объятия твоей сестры</i>? — съязвил он. Сестра бы её явно обиделась.</p>
+
+                    <p>— <i>О браво, браво, вот ответ!</i> — Она уже заливалась смехом. Таким, что человек бы влюбился сразу. И умер бы. — <i>Мы в Никуда идем ежесекундно! И звезды, и планеты, и Кровь твоя! Ничем мы станем, скучным и убогим!</i></p>
+
+                    <p>— Прекрати, — он не хотел продолжать. Уж точно <i>не так</i>.</p>
+
+                    <p>— <i>Как прекращу я, милый мой голубчик?! Ведь ты же произнес вопрос! Вопрос о вечном и конечном!</i></p>
+
+                    <p>— <i>Меня лишь эти волновали</i>. — Он указал на двух юношей. Похожих, но не братьев.</p>
+
+                    <p>— <i>Ох, что я слышу?! Звезду волнуют червяки! Как бы Папаши наши хохотали!</i></p>
+
+                    <p>— <i>Заткнись, чертовка, будь добра.</i></p>
+
+                    <p>— <i>Как я заткнусь, ты, милый мой орлан? Ведь голос мой — одна твоя услада! Что делать будешь без меня?! Сопьешься?! Ха, попробуй! Твой братец пробовал, да жив, здоров!</i></p>
+
+                    <p>— <i>Тебе-то что, убогая старуха?</i></p>
+
+                    <p><i>— Да помилее многих буду я! И от тебя я становлюсь все краше! Но ты ответь мне, миленький ты мой! Куда идем мы все ежесекундно?!</i></p>
+
+                    <p>— <i>К твоей сестре, не повторяй вопросов.</i></p>
+
+                    <p>— <i>Моя сестра — лишь повод, а не цель! Да, станем мы Ничем, и что?! Теперь бессмысленно нам делать что-то?!</i></p>
+
+                    <p>— <i>Я этого не говорил.</i></p>
+
+                    <p>— <i>Но думал, думал, и не спорь!</i></p>
+
+                    <p>— <i>Так что ты предлагаешь?!</i></p>
+
+                    <p>— <i>Подумать хорошенько, любовничек ты мой! Ты думай, а я тебя поублажаю!..</i></p>
+
+                    <p>— <i>Избавь от пытки, дщерь без цели!</i></p>
+
+                    <p>— <i>Тогда ответь на свой вопрос! В чем смысл бытия всея?!</i></p>
+
+                    <p>— <i>Не знаю, чтобы наблюдать.</i></p>
+
+                    <p>— <i>Уже теплее, миленький ты мой! Но думай, думай хорошенько! А то губам моим тоскливо без тебя!..</i></p>
+
+                    <p>— <i>Ты! Чертовка дранная, ты про себя! Ты цель, не так ли?!</i></p>
+
+                    <p>— <i>Ах, ты меня смущаешь!.. Конечно нет, дурачок мой ненаглядный! Я лишь подручный, служка, раб, суккуб! Выбирай что хочешь! Но ты оставишь лишь вопрос или меня! Так отвечай же, ненаглядный! Отвечай, а то я не ручаюсь!..</i></p>
+
+                    <p>— <i>Так ты не цель... И не сестра твоя...</i></p>
+
+                    <p>— <i>Быстрее думай, ненаглядный!..</i></p>
+
+                    <p>— <i>А цель-то есть? Ответь мне, милая моя!</i></p>
+
+                    <p>— <i>Ах ты проказник, умилить меня решил?! Везет тебе, что влюблена я без остатка! Так слушай, слушай и внимай! Что есть ответ на все и ничего?! Что знают лишь мудрейшие из мудрых?! И что глаголит червь, услышав мои речи?!</i></p>
+
+                    <p>— <i>Бессмыслица какая-то... Постой, бессмысленность? Серьезно?!</i></p>
+
+                    <p>— Правильно.</p>
+
+                    <p>Гогот пропал, сверкнула её улыбка. Страшная, коварная, но такая красивая. Пожалуй, он её действительно любил. Не тоскливо с ней, что ли. Когда не гогочет, по крайней мере.</p>
+
+                    <p>— Ты действительно меня любишь? Или просто дразнишь?</p>
+
+                    <p>— Одно другому не мешает. — Она все еще улыбалась, но не смеялась. Может, действительно любила.</p>
+
+                    <p>— А наша любовь что-то значит?</p>
+
+                    <p>— Ты сам ответил, сам подумай.</p>
+
+                    <p>Она встала. Хорошо, что люди её не видели. Такой красоты им лучше не видеть. Он иногда думал, что ему бы тоже. Не стоило бы видеть её.</p>
+
+                    <p>— <i>Любовь, надеюсь, не другой ответ?</i> — Он попытался продолжить, скривив улыбку. На фоне её его выглядела ничтожной.</p>
+
+                    <p>— <i>Раз ты сказал, тогда, возможно, нет.</i></p>
+
+                    <p>— <i>А ты что думаешь, о милая моя?</i></p>
+
+                    <p>— <i>Я думаю, весело с тобой.</i></p>
+
+                    <p>— <i>А веселье, часом, не еще один ответ?</i></p>
+
+                    <p>— <i>Вот ты и думай, наивный петушок.</i></p>
+
+                    <p>Она наклонилась, легко поцеловала его. Просто поцеловала. Он ощутил только искру тепла. Наверное, все же любит. Могла ведь и испепелить. Вместе со всем городом.</p>
+
+                    <p>Потом она ушла. Исчезла, если точнее. Он просто моргнул, и её нет. И он снова стал собой. Снова все стало понятным и простым. Он начало, вот и все. Ему вопросы цели не важны. И юноши эти тоже. Едва ли найдут его <i>клад</i>.</p>
+
+                    <p>Но искра тепла осталась с ним. Хотя что это? Разве не состояние большей энтропии? Разве не примитивные биохимические реакции? Разве не инстинкт, которыми они обделены? Ему не хотелось так думать. Ему хотелось думать, что это часть него.</p>
+
+                    <div class="chapter-navigation">
+                        <a href="chapter2.html" class="chapter-link">← Предыдущая глава</a>
+                        <a href="chapter4.html" class="chapter-link">Следующая глава →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

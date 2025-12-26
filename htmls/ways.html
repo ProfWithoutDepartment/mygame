@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О направлениях | Архивы Профессора</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+.work-header {
+    background: #2C3E50;
+    color: var(--white);
+    padding: 3rem 0;
+    margin-bottom: 0;
+}
+
+.work-header-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.work-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.work-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.work-text-section {
+    background: var(--white);
+    padding: 3rem 0;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.text-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.work-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    
+    /* Сохранение пропорций как в оригинальном документе */
+    object-fit: contain;
+    
+    /* Центрирование изображения */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 767px) {
+    .work-title {
+        font-size: 2rem;
+    }
+    
+    .text-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Кнопка для открытия/закрытия бокового меню -->
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="sidebar-link">Главная</a></li>
+                <li><a href="works.html" class="sidebar-link">Произведения</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>© 2023 Архивы Профессора</p>
+        </div>
+    </aside>
+
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-placeholder">
+                <a href="index.html" class="logo-link">
+                    <div class="writer-logo" aria-hidden="true">
+                        <div class="head"></div>
+                        <div class="glasses">
+                            <div class="glass left"></div>
+                            <div class="bridge"></div>
+                            <div class="glass right"></div>
+                        </div>
+                        <div class="shoulders"></div>
+                        <div class="cup"></div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="works.html" class="nav-link">Произведения</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="main">
+        <!-- Заголовок произведения -->
+        <section class="work-header">
+            <div class="container work-header-content">
+                <h1 class="work-title">О направлениях</h1>
+            </div>
+        </section>
+
+        <!-- Блок с текстом произведения -->
+        <section class="work-text-section">
+            <div class="container">
+                <div class="text-content">
+                    <!-- Картинка перед текстом -->
+                    <img src="pictures/ways.jpg" alt="Иллюстрация к тексту" class="work-image">
+                    <p></p>
+                    
+                    <p>Иногда он смотрел куда-то глубоко вниз, в самую Бездну. Так, без какой-либо цели. Просто чтобы посмотреть на человеческие низости, абсолютную тьму и несчастье, что обошло его стороной. И, возможно, чтобы пополнить темы для черного юмора, которым, впрочем, он редко с кем делился: кто-то ему сказал, что «быть клоуном» — плохо. Потому этот черный юмор влезал из его головы лишь в моменты одиночества — точнее периоды, долгие периоды одиночества — в виде бессвязного бормотания, порой бессознательного и наполненного повторениями.</p>
+
+                    <p>Иногда он смотрел наверх, на саму Бесконечность. На Её холодную красоту, многогранную сложность и отсутствие всего того, что могло его волновать. Иногда это тоже приятно, да. Улететь куда-нибудь далеко, от всего того, что тебя тяготит. То, что там, наверху, проблем в общем-то куда больше — не просто так Бесконечность пуста — его сильно не волновало. Так, мелким слепнем вгрызалось где-то в глубины его бессознательного, заставляя его слишком сильно не надеяться на Неё. На его веку Бесконечность еще останется недосягаемой. Не из-за технических сложностей, нет, просто никому Она к черту не упала, эта Бесконечность. В отличии от него, у остальных людей было чем заняться. А у тех, кто все же думал об этом, Бесконечность превращалась в пусть и практически реализуемые, но скучные гео- и гелио-стационарные орбиты, токамаки да АМС на медленно тлеющих РИТЭГах. Реальность, эта жестокая стерва, всегда превращало нечто возвышенное в скуку или грязь, по которой нужно долго и тяжело пробираться. Куда уж от неё деться даже в Бесконечности.</p>
+
+                    <p>Иногда он все же смотрел вперед, вот уж неожиданность. Довольно часто смотрел, если быть точным. На все те земные радости, доступные даже неказистому одинокому человеку. Не алкоголь, если вы об этом подумали. Алкоголь он не любил. Он убивал единственное, что у него было — Разум. А способов убийства Разума у него и так хватало, платить еще за один он не собирался. К тому же Разум был единственной причиной, по которой он жил, ведь именно Разум вынес, пусть лишь на время, его новорожденное тело из-под неумолимой поступи энтропии.</p>
+
+                    <p>Редко он смотрел только внутрь себя. Непонятно, чего он боялся. То ли несбыточных мечтаний, что с отчаянием утопающего вгрызаются в его душу. То ли ужасающих низменностей, что заставляют стенки его личности медленно гнить. А, может, он боялся найти там одно больше Ничто, из которого он вышел и в которое он когда-нибудь уйдет.</p>
+
+                    <p>Потому ему и оставалось смотреть вниз, на войны и геноцид; наверх, на выдуманные линии орбит и простыни с мячиками, при помощи которых пытаются объяснить дошколятам нелинейные дифференциальные уравнения в частных производных; или вперед, на простые радости жизни, вроде песен и того, что описать можно только эзоповым языком вследствие стыда. Или, в конце концов, писать обо всем этом, придумывая какого-то «его», чтобы свершить смерть автора и не слишком сильно заглядывать внутрь себя.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

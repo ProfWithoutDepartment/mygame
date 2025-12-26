@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DOM-Тест — Вариант 2 (Ругательства)</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/dom-test.css">
+</head>
+<body>
+    <!-- Кнопка для открытия/закрытия бокового меню -->
+    <button class="sidebar-toggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Боковая панель -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h3>Навигация</h3>
+            <button class="sidebar-close" aria-label="Закрыть меню">×</button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html" class="sidebar-link active">Главная</a></li>
+                <li><a href="works.html" class="nav-link">Произведения</a></li>
+                <li><a href="dom-test.html" class="nav-link">DOM-тест</a></li>
+                <li><a href="words.html" class="nav-link">Перетаскивание слов</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 1991-2025 Файнзильберг Г.А</p>
+        </div>
+    </aside>
+
+    <!-- Затемнение фона при открытом меню -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <!-- Шапка сайта -->
+    <header class="header">
+    <div class="container header-content">
+        <div class="logo-placeholder">
+            <a href="../index.html" class="logo-link">
+                <div class="writer-logo" aria-hidden="true">
+                    <div class="head"></div>
+                    <div class="glasses">
+                        <div class="glass left"></div>
+                        <div class="bridge"></div>
+                        <div class="glass right"></div>
+                    </div>
+                    <div class="shoulders"></div>
+                    <div class="cup"></div>
+                </div>
+            </a>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link active">Главная</a></li>
+                <li><a href="works.html" class="nav-link">Произведения</a></li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+
+    <main class="main">
+      <section class="container">
+        <h1>DOM-Тест — Вариант 2: Ругательства</h1>
+        <p class="lead">Вопросы выводятся в случайном порядке. Выберите один ответ на вопрос — блоки анимируются вниз, затем показывается маркер ответа и пояснение. Нельзя выбирать новый ответ, пока текущий не обработан.</p>
+
+        <div id="status-area" class="status-area" aria-live="polite"></div>
+
+        <div id="questions-wrap" class="questions-wrap"></div>
+
+        <div id="results" class="results" hidden></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 1991-2025 Файнзильберг Г.А. Все права защищены Пиратским Интернационалом.</p>
+                </div>
+                <div class="footer-section">
+                    <ul class="social-links">
+                        <li><a href="#">prof.fainzilberg@mail.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="../jsscripts/script.js"></script>
+<script src="../jsscripts/dom-test.js"></script>
+</body>
+</html>

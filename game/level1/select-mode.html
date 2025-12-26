@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 - Выбор сложности</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../select-mode.css">
+</head>
+<body>
+    <div class="select-mode-container">
+        <div class="mode-card mode-theme-l1">
+            <div class="mode-header">
+                <h2>Уровень 1: Заполни пропуск</h2>
+                <p>Выберите уровень сложности</p>
+            </div>
+            
+            <div class="level-description">
+                <h3>Описание уровня:</h3>
+                <p>В этом уровне вам предстоит заполнить пропуски в предложениях, выбирая правильные слова из предложенных вариантов.</p>
+                <ul>
+                    <li>Нажмите цифру 1-6 для выбора правильного слова</li>
+                    <li>Каждый правильный ответ приносит 20 очков</li>
+                    <li>Будьте внимательны - количество ошибок ограничено!</li>
+                </ul>
+            </div>
+            
+            <div class="difficulty-grid" id="difficultyGrid">
+                <!-- Сложности будут добавлены через JavaScript -->
+            </div>
+            
+            <button class="start-button" id="startButton" disabled>Начать уровень</button>
+            <br>
+            <a href="../levels.html" class="back-button">← Назад к выбору уровней</a>
+        </div>
+    </div>
+    
+    <script src="../common.js"></script>
+    <script>
+        const levelNumber = 1;
+        
+        // Проверка доступа к уровню
+        if (typeof checkLevelAccess !== 'undefined' && !checkLevelAccess(levelNumber)) {
+            // Если доступ запрещен, скрипт дальше не выполняется
+        } else {
+            let selectedDifficulty = null;
+            
+            const difficulties = [
+                { id: 'easy', name: 'Простой', icon: 'Easy', color: '#4CAF50' },
+                { id: 'medium', name: 'Средний', icon: 'Medium', color: '#FF9800' },
+                { id: 'hard', name: 'Сложный', icon: 'Hard', color: '#f44336' }
+            ];
+            
+            const settings = {
+                easy: { time: 120, mistakes: 5, multiplier: '×1.0' },
+                medium: { time: 90, mistakes: 3, multiplier: '×1.5' },
+                hard: { time: 60, mistakes: 1, multiplier: '×2.0' }
+            };
+            
+            const grid = document.getElementById('difficultyGrid');
+            
+            difficulties.forEach(diff => {
+                const setting = settings[diff.id];
+                const card = document.createElement('div');
+                card.className = `difficulty-card ${diff.id}`;
+                card.innerHTML = `
+                    <div class="difficulty-icon">${diff.icon}</div>
+                    <div class="difficulty-title">${diff.name}</div>
+                    <div class="difficulty-stats">
+                        <p><strong>Время:</strong> ${setting.time} сек.</p>
+                        <p><strong>Ошибки:</strong> ${setting.mistakes}</p>
+                        <p><strong>Множитель очков:</strong> ${setting.multiplier}</p>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.difficulty-card').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    
+                    card.classList.add('active');
+                    selectedDifficulty = diff.id;
+                    
+                    document.getElementById('startButton').disabled = false;
+                    document.getElementById('startButton').textContent = `Начать уровень (${diff.name})`;
+                });
+                
+                grid.appendChild(card);
+            });
+            
+            document.getElementById('startButton').addEventListener('click', () => {
+                if (selectedDifficulty) {
+                    if (typeof DifficultyManager !== 'undefined') {
+                        DifficultyManager.saveDifficulty(levelNumber, selectedDifficulty);
+                    } else {
+                        localStorage.setItem(`level${levelNumber}Difficulty`, selectedDifficulty);
+                    }
+                    
+                    window.location.href = 'index1.html';
+                }
+            });
+            
+            window.addEventListener('DOMContentLoaded', () => {
+                let savedDifficulty;
+                if (typeof DifficultyManager !== 'undefined') {
+                    savedDifficulty = DifficultyManager.getDifficulty(levelNumber);
+                } else {
+                    savedDifficulty = localStorage.getItem(`level${levelNumber}Difficulty`) || 'easy';
+                }
+                
+                if (savedDifficulty) {
+                    const card = document.querySelector(`.difficulty-card.${savedDifficulty}`);
+                    if (card) {
+                        card.click();
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

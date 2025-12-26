@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1: Заполни пропуск</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Уровень 1: Заполни пропуск</h1>
+            <div class="game-info">
+                <div>Игрок: <span id="playerName"></span></div>
+                <div>Время: <span id="timer">120</span> сек.</div>
+                <div>Счет: <span id="score">0</span></div>
+                <div>Ошибки: <span id="mistakes"></span></div>
+                <div>Вопрос: <span id="currentQuestion">1</span>/5</div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="task">
+                <h2>Нажмите цифру (1-6) на правильном слове для заполнения пропуска:</h2>
+                <div class="sentence-container">
+                    <p id="sentenceText" class="sentence-text"></p>
+                </div>
+                
+                <div class="options-container" id="optionsContainer">
+                </div>
+                
+                <div class="feedback" id="feedback">
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="finishBtn">Завершить уровень</button>
+            </div>
+            
+            <div class="instructions">
+                <p><strong>Инструкция:</strong> Нажмите цифру 1-6 на клавиатуре для выбора правильного слова. Допускается 1 ошибка.</p>
+            </div>
+        </main>
+    </div>
+    
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Заголовок</h3>
+            <p class="modal-message" id="modalMessage">Сообщение</p>
+            <div class="modal-buttons">
+                <button class="modal-button modal-button-primary" id="modalOkButton">OK</button>
+                <button class="modal-button modal-button-secondary" id="modalCancelButton" style="display: none;">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../libs/confetti.browser.min.js"></script>
+    <script src="../common.js"></script>
+    <script src="script1.js"></script>
+</body>
+</html>

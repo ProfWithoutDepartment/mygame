@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 2: Найди неподходящие слова</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Уровень 2: Найди неподходящие слова</h1>
+            <div class="game-info">
+                <div>Игрок: <span id="playerName"></span></div>
+                <div>Время: <span id="timer">120</span> сек.</div>
+                <div>Счет: <span id="score">0</span></div>
+                <div>Ошибки: <span id="mistakes">0</span></div>
+                <div>Вопрос: <span id="currentQuestion">1</span>/3</div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="task">
+                <h2>Дважды кликните на слова, которые не подходят по смыслу в тексте:</h2>
+                
+                <div class="text-container" id="textContainer">
+                </div>
+                
+                <div class="feedback" id="feedback">
+                </div>
+                
+                <div class="found-words">
+                    <p>Найденные слова: <span id="foundCount">0</span>/<span id="totalErrors">0</span></p>
+                    <div class="found-list" id="foundList">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="finishBtn">Завершить уровень</button>
+            </div>
+            
+            <div class="instructions">
+                <p><strong>Инструкция:</strong> Дважды кликните на слова, которые не подходят по смыслу. Слова не выделены - ищите их сами! Каждый правильный клик даёт 30 очков, неправильный - штраф 15 очков и ошибку. После нахождения всех ошибок автоматически переход к следующему вопросу.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Заголовок</h3>
+            <p class="modal-message" id="modalMessage">Сообщение</p>
+            <div class="modal-buttons">
+                <button class="modal-button modal-button-primary" id="modalOkButton">OK</button>
+                <button class="modal-button modal-button-secondary" id="modalCancelButton" style="display: none;">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../libs/confetti.browser.min.js"></script>
+    <script src="../common.js"></script>
+    <script src="script2.js"></script>
+</body>
+</html>
