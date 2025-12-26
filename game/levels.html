@@ -358,45 +358,69 @@
         
         // Функция проверки доступности уровней
         function updateLevelsAvailability() {
-            const passedLevels = JSON.parse(localStorage.getItem('passedLevels')) || [false, false, false];
-            
-            // Уровень 1 всегда доступен
+    // 1. ПРОВЕРЯЕМ ЧИТ "creator" (это самое главное!)
+            const playerName = localStorage.getItem('playerName');
+            const isCreator = playerName && playerName.toLowerCase() === 'creator';
+    
+    // 2. ПРАВИЛЬНО получаем прогресс. Используем функцию getPlayerKey, если она есть.
+            let passedLevels;
+            if (typeof getPlayerKey !== 'undefined') {
+        // Это правильный путь: получаем ключ с именем игрока
+                const passedLevelsKey = getPlayerKey('passedLevels');
+                passedLevels = JSON.parse(localStorage.getItem(passedLevelsKey)) || [false, false, false];
+            } else {
+                // Фолбэк на случай, если common.js не загружен
+                passedLevels = JSON.parse(localStorage.getItem('passedLevels')) || [false, false, false];
+            }
+    
+    // 3. ОБНОВЛЯЕМ КНОПКИ
             const level1Card = document.getElementById('level1');
-            level1Card.classList.remove('disabled');
-            
-            // Уровень 2 доступен, если пройден уровень 1
             const level2Card = document.getElementById('level2');
-            if (passedLevels[0]) {
+            const level3Card = document.getElementById('level3');
+    
+    // Уровень 1 всегда доступен
+            level1Card.classList.remove('disabled');
+            level1Card.href = 'level1/select-mode.html';
+            level1Card.onclick = null; // Удаляем старый обработчик
+    
+    // Для уровней 2 и 3: если ЧИТ или ПРОГРЕСС - разблокируем
+            const isLevel2Available = isCreator || passedLevels[0];
+            const isLevel3Available = isCreator || passedLevels[1];
+    
+    // Логика для уровня 2
+            if (isLevel2Available) {
                 level2Card.classList.remove('disabled');
-                level2Card.querySelector('.lock-icon').style.display = 'none';
+                level2Card.href = 'level2/select-mode.html';
+                level2Card.onclick = null;
+                if (level2Card.querySelector('.lock-icon')) {
+                    level2Card.querySelector('.lock-icon').style.display = 'none';
+                }
             } else {
                 level2Card.classList.add('disabled');
-                level2Card.querySelector('.lock-icon').style.display = 'block';
-                // Отключаем ссылку
                 level2Card.href = 'javascript:void(0)';
-                level2Card.onclick = function() {
-                    alert('Чтобы открыть уровень 2, сначала пройдите уровень 1!');
-                };
+                // Обработчик оставляем, но он теперь будет работать всегда
             }
-            
-            // Уровень 3 доступен, если пройден уровень 2
-            const level3Card = document.getElementById('level3');
-            if (passedLevels[1]) {
+    
+    // Логика для уровня 3 (аналогично уровню 2)
+            if (isLevel3Available) {
                 level3Card.classList.remove('disabled');
-                level3Card.querySelector('.lock-icon').style.display = 'none';
+                level3Card.href = 'level3/select-mode.html';
+                level3Card.onclick = null;
+                if (level3Card.querySelector('.lock-icon')) {
+                    level3Card.querySelector('.lock-icon').style.display = 'none';
+                }
             } else {
                 level3Card.classList.add('disabled');
-                level3Card.querySelector('.lock-icon').style.display = 'block';
-                // Отключаем ссылку
                 level3Card.href = 'javascript:void(0)';
-                level3Card.onclick = function() {
-                    if (passedLevels[0]) {
-                        alert('Чтобы открыть уровень 3, сначала пройдите уровень 2!');
-                    } else {
-                        alert('Чтобы открыть уровень 3, сначала пройдите уровень 1 и 2!');
-                    }
-                };
             }
+            
+            console.log('Отладка блокировки:', {
+                playerName: playerName,
+                isCreator: isCreator,
+                passedLevels: passedLevels,
+                isLevel2Available: isLevel2Available,
+                isLevel3Available: isLevel3Available
+            });
         }
         
         // Кнопка выхода
@@ -413,4 +437,5 @@
         setInterval(displayRating, 5000);
     </script>
 </body>
+
 </html>
