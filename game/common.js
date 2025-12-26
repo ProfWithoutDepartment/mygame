@@ -126,7 +126,7 @@ async function checkLevelAccess(levelNumber) {
           'Доступ запрещен',
           'Сначала пройдите предыдущий уровень!',
           false, // Это не confirm окно
-          '../levels.html' // URL для редиректа
+          'levels.html' // URL для редиректа
       );
       return false;
   }
@@ -135,9 +135,9 @@ async function checkLevelAccess(levelNumber) {
 
 function goToNextLevel(currentLevel) {
   if (currentLevel < 3) {
-      window.location.href = `../level${currentLevel + 1}/select-mode.html`;
+      window.location.href = `level${currentLevel + 1}/select-mode.html`;
   } else {
-      window.location.href = '../levels.html';
+      window.location.href = 'levels.html';
   }
 }
 
@@ -206,7 +206,7 @@ const DifficultyManager = {
 
 // Функция для возврата на главную страницу сайта
 function goToSiteHome() {
-  window.location.href = '../../index.html';
+  window.location.href = '../index.html';
 }
 
 // Функция для возврата на страницу игры на сайте
