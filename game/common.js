@@ -135,9 +135,9 @@ async function checkLevelAccess(levelNumber) {
 
 function goToNextLevel(currentLevel) {
   if (currentLevel < 3) {
-      window.location.href = `level${currentLevel + 1}/select-mode.html`;
+      window.location.href = `../level${currentLevel + 1}/select-mode.html`;
   } else {
-      window.location.href = 'levels.html';
+      window.location.href = '../levels.html';
   }
 }
 
